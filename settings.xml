@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+| Maven Settings for the GE Developer Cloud
+|
+| Purpose:
+| This file is to hold user-specific settings. Project-specific settings should be a part of the
+| project's pom.xml files.
+|
+| Directions:
+| 1. Place this file in your .m2 directory. The filepath will be: ${user.home}/.m2/settings.xml
+-->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+<!-- Getting Your Artifactory Encrypted Password
+| 1. Visit: https://devcloud.swcoe.ge.com/artifactory
+| 2. At the top right, click your SSO.
+| 3. Type in your SSO password in the Current Password textbox and click Unlock.
+| 4. You'll be given the encrypted password along with an escaped version.
+| 5. Use the escaped version below (Artifactory should display an example).
+-->
+  <servers>
+    <server>
+      <id>devcloud-efs-artifactory-release</id>
+      <username>501861961</username>
+      <password>AP5953HXLH1yBgwMXt2F6qVixgt</password>
+    </server>
+    <server>
+      <id>devcloud-efs-artifactory-snapshots</id>
+      <username>501861961</username>
+      <password>AP5953HXLH1yBgwMXt2F6qVixgt</password>
+    </server>
+    <server>
+      <id>devcloud-artifactory</id>
+      <username>501861961</username>
+      <password>AP5953HXLH1yBgwMXt2F6qVixgt</password>
+    </server>
+    <server>
+      <id>devcloud-artifactory-snapshots</id>
+      <username>501861961</username>
+      <password>AP5953HXLH1yBgwMXt2F6qVixgt</password>
+    </server>
+  </servers>
+<!-- Repositories
+| You can specify your repos here or in your project's own pom.xml files.
+-->
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+          <enabled>false</enabled>
+          </snapshots>
+          <id>devcloud-efs-artifactory-release</id>
+          <name>DevCloud EFS Artifactory libs-release</name>
+          <url>https://devcloud.swcoe.ge.com/artifactory/EFS</url>
+        </repository>
+        <repository>
+          <snapshots/>
+          <id>devcloud-efs-artifactory-snapshots</id>
+          <name>DevCloud EFS Artifactory libs-snapshot</name>
+          <url>https://devcloud.swcoe.ge.com/artifactory/EFS-SNAPSHOT</url>
+        </repository>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>devcloud-artifactory</id>
+          <name>libs-release</name>
+          <url>https://devcloud.swcoe.ge.com/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots/>
+          <id>devcloud-artifactory-snapshots</id>
+          <name>libs-snapshot</name>
+          <url>https://devcloud.swcoe.ge.com/artifactory/libs-snapshot</url>
+        </repository>
+      </repositories>
+  
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>devcloud-artifactory</id>
+          <name>plugins-release</name>
+          <url>https://devcloud.swcoe.ge.com/artifactory/plugins-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>devcloud-artifactory-snapshots</id>
+          <name>plugins-snapshot</name>
+          <url>https://devcloud.swcoe.ge.com/artifactory/plugins-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+  
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+ 
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+  
+  <proxies>
+    <proxy>
+      <active>false</active>
+      <protocol>http</protocol>
+      <username></username>
+      <password></password>
+      <host>sjc1intproxy01.crd.ge.com</host>
+      <port>8080</port>
+      <nonProxyHosts>devcloud.swcoe.ge.com|ge.com|localhost|home</nonProxyHosts>
+    </proxy>
+  </proxies>
+
+   <localRepository>/udeploynas/Jenkins/maven_repo/${USER}/.m2/repository</localRepository>
+</settings>
